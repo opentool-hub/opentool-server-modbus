@@ -1,32 +1,28 @@
-# openmodbus_dart
+# Modbus for OpenTool
 
-[English](README.md) · 中文
+[English](README.md) | 中文
 
-一个用于 Dart 的 OpenModbus JSON 规范解析器
+OpenTool的Modbus客户端实现，运行opentool的请求来执行Modbus的操作
 
-灵感来源于OpenAPI、OpenRPC和OpenAI的 `function calling`示例。
+支持Modbus `TCP`/`UDP`/`ASCII`/`RTU`
 
-## 功能
+## 构建
 
-- 加载 OpenTool JSON 文件，并转换为 Dart 对象。 见 [OpenModbus规范](openmodbus-specification-cn.md).
+### Windows
 
-## 用法
-
-根据 `/example/openmodbus_dart_example.dart` 示例进行操作。
-
-- 从 JSON 字符串加载
-```dart
-Future<void> main() async {
-  String jsonString = "{...OpenModbus String...}";
-  OpenModbusLoader openModbusLoader = OpenModbusLoader();
-  OpenModbus openModbus = await openModbusLoader.load(jsonString);
-}
+```bash
+dart pub get
+dart compile exe bin/opentool_server_modbus.dart -o build/modbus.exe
 ```
-- 从 JSON 文件加载
-```dart
-Future<void> main() async {
-  String jsonPath = "$currentWorkingDirectory/example/json/$jsonFileName";
-  OpenModbusLoader openModbusLoader = OpenModbusLoader();
-  OpenModbus openModbus = await openModbusLoader.loadFromFile(jsonPath); 
-}
+
+### macOS / Linux
+
+```bash
+dart pub get
+dart compile exe bin/opentool_server_modbus.dart -o build/modbus
 ```
+
+## 示例
+
+1. 拉起OpenTool Server，也即运行 `bin/opentool_server_modbus.dart`
+2. 运行 `example/client.dart`

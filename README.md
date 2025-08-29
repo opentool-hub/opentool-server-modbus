@@ -1,32 +1,28 @@
-# openmodbus_dart
+# Modbus for OpenTool
 
-English · [中文](README-zh_CN.md)
+English | [中文](README-zh_CN.md)
 
-An OpenModbus JSON Spec Parser for dart.
+An OpenTool-compatible Modbus client implementation that handles OpenTool requests to perform Modbus operations.
 
-Inspired by OpenAPI, OpenRPC, and OpenAI `function calling` example.
+Supports Modbus `TCP` / `UDP` / `ASCII` / `RTU`.
 
-## Features
+## Build
 
-- Load OpenModbus json file, and convert to dart object. See [OpenModbus Specification](openmodbus-specification-en.md).
+### Windows
 
-## Usage
-
-According to `/example/openmodbus_dart_example.dart`.
-
-- From JSON String
-```dart
-Future<void> main() async {
-  String jsonString = "{...OpenModbus String...}";
-  OpenModbusLoader openModbusLoader = OpenModbusLoader();
-  OpenModbus openModbus = await openModbusLoader.load(jsonString);
-}
+```bash
+dart pub get
+dart compile exe bin/opentool_server_modbus.dart -o build/modbus.exe
 ```
-- From JSON File
-```dart
-Future<void> main() async {
-  String jsonPath = "$currentWorkingDirectory/example/json/$jsonFileName";
-  OpenModbusLoader openModbusLoader = OpenModbusLoader();
-  OpenModbus openModbus = await openModbusLoader.loadFromFile(jsonPath); 
-}
+
+### macOS / Linux
+
+```bash
+dart pub get
+dart compile exe bin/opentool_server_modbus.dart -o build/modbus
 ```
+
+## Example
+
+1. Launch the OpenTool Server by running `bin/opentool_server_modbus.dart`
+2. Run `example/client.dart`
